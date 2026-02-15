@@ -222,6 +222,7 @@ git add .
 git commit -m "добавил фичу"
 git push origin feature-name
 
+
 # На GitHub создаёшь Pull Request
 # Коллега проверяет твой код
 # Объединяешь в main
