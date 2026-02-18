@@ -1,0 +1,95 @@
+/* Убираем отступы по умолчанию */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Стили для всей страницы */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Контейнер для контента */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* Заголовок */
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+/* Список новостей - используем Flexbox */
+.news-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* Карточка новости */
+.news-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Эффект при наведении мыши */
+.news-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transform: translateY(-5px);
+}
+
+/* Заголовок новости */
+.news-card h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+/* Источник новости */
+.news-card .source {
+    color: #7f8c8d;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Адаптивный дизайн для мобильных */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .news-list {
+        gap: 15px;
+    }
+    
+    .news-card {
+        max-width: 100%;
+    }
+}

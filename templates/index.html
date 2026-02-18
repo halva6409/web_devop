@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Новостной сайт</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📰 Последние новости</h1>
+        <p>Всего новостей: {{ news|length }}</p>
+        
+        <div class="news-list">
+            {% for item in news %}
+            <div class="news-card">
+                <h3>{{ item.title }}</h3>
+                <p class="source">Источник: {{ item.source }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
