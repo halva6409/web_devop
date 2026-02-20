@@ -9,16 +9,12 @@
 <body>
     <div class="container">
         <h1>📰 Последние новости</h1>
-        <p>Всего новостей: {{ news|length }}</p>
-        
-        <div class="news-list">
-            {% for item in news %}
-            <div class="news-card">
-                <h3>{{ item.title }}</h3>
-                <p class="source">Источник: {{ item.source }}</p>
-            </div>
-            {% endfor %}
-        </div>
+        <button id="refreshButton">ОБНОВИ</button>
+        <input id="SearchPole" type="text" placeholder="Поиск по новостям...">
+        <div class="news-list" id="newsList">
+            <p>Загружаю новости..</p>
+        </div>        
     </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
