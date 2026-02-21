@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify , request
 import os
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -19,19 +19,33 @@ class Mews(db.Model):
     content  = db.Column(db.Text)             
     date_new = db.Column(db.DateTime, default = datetime.now)              
 
-@app.route('/api/news')
+@app.route('/api/news' , methods=['POST', 'GET'])
 def start():
-    news = [
-        {'id': 1, 'title': 'Запуск нового iPhone 16', 'source': 'BBC'},
-        {'id': 2, 'title': 'Tesla представила новую модель', 'source': 'Reuters'},
-        {'id': 3, 'title': 'Биткоин достиг $100,000', 'source': 'CNN'},
-        {'id': 4, 'title': 'SpaceX успешно запустила ракету', 'source': 'BBC'}
-    ]
-    return jsonify(news)
+    if request.method == 'POST':
+        data = request.json
+        news_list = Mews(title=data['title'], source=data.get('source' , 'Unknown'), content=data.get('content', ''))
+        db.session.add(news_list)
+        db.session.commit()
+        return jsonify({'id': news_list.id, 'message': 'Create'}), 201
+    if request.method == 'GET':
+        news_list = Mews.query.all()
+        return jsonify([{
+            'id': n.id,
+            'title': n.title,
+            'source': n.source,
+            'content': n.content
+        } for n in news_list])
 
 @app.route('/')
 def new():
     return render_template('index.html')
+
+@app.route('/api/news/<int:id>', methods=['DELETE'])
+def del_te(id):
+    news = Mews.query.get(id)
+    db.session.delete(news)
+    db.session.commit()
+    return '', 204
 
 
 if __name__ == '__main__':

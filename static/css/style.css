@@ -15,14 +15,37 @@ body {
 
 /* Контейнер для контента */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: white;
-    padding: 30px;
+    min-width: 90%;
+    max-width: 100%;
+    margin: 1%;
+    background: rgb(128, 180, 204);
+    padding: 15px;
     border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0);
 }
 
+.post_delete {
+    display: flex;
+    justify-content: space-between;
+}
+.left{
+    min-width: 40%;
+    max-width: 100%;
+    margin: 5%;
+    background: rgb(128, 180, 204);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0);
+}
+.right{
+    min-width: 40%;
+    max-width: 100%;
+    margin: 5%;
+    background: rgb(128, 180, 204);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0);
+}
 /* Заголовок */
 h1 {
     color: #333;
@@ -40,13 +63,14 @@ h1 {
 
 /* Карточка новости */
 .news-card {
-    background: white;
-    border: 1px solid #ddd;
+    background: rgb(255, 255, 255);
+    border: 1px solid #ffffff;
     border-radius: 12px;
     padding: 20px;
-    width: 100%;
-    max-width: 350px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 40%;    
+    margin: 5px;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.493);
     transition: all 0.3s ease;
     cursor: pointer;
 }

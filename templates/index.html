@@ -15,6 +15,17 @@
             <p>Загружаю новости..</p>
         </div>        
     </div>
+    <div class="post_delete">
+        <div class="left">
+            <input id = "title_new" type="text" placeholder="Заголовок...">
+            <input id = "source_new" type="text" placeholder="Источник...">
+            <button id = "post_new">Загрузить</button>
+        </div>
+        <div class="right">
+            <input id = "number_delete" type="text" placeholder="Номер новости для удаления...">
+            <button id = "delete_news">Удалить</button>
+        </div>
+    </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
