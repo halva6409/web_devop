@@ -9,21 +9,23 @@
 <body>
     <div class="container">
         <h1>📰 Последние новости</h1>
-        <button id="refreshButton">ОБНОВИ</button>
-        <input id="SearchPole" type="text" placeholder="Поиск по новостям...">
+        <input id="SearchPole" class="input-field" type="text" placeholder="Поиск по новостям...">
+        <button id="refreshButton" class="btn btn-red" >ОБНОВИ</button>
         <div class="news-list" id="newsList">
             <p>Загружаю новости..</p>
         </div>        
     </div>
     <div class="post_delete">
-        <div class="left">
-            <input id = "title_new" type="text" placeholder="Заголовок...">
-            <input id = "source_new" type="text" placeholder="Источник...">
-            <button id = "post_new">Загрузить</button>
-        </div>
         <div class="right">
-            <input id = "number_delete" type="text" placeholder="Номер новости для удаления...">
-            <button id = "delete_news">Удалить</button>
+            <input id = "title_new" class="input-field" type="text" placeholder="Заголовок...">
+            <input id = "source_new" class="input-field" type="text" placeholder="Источник...">
+            <button id = "post_new" class="btn btn-red">Загрузить</button>
+        </div>
+        <div class="container">
+            <label for="imageFile" class="btn btn-red">Выбрать картинку</label>
+            <input type="file" id="imageFile" style="display: none">
+            <button id = "upload"class="btn btn-blue">Загрузить картинку</button>
+            <div id="uploadResult"></div>
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>

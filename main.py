@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify , request
 import os
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from werkzeug.utils import secure_filename
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -11,6 +12,10 @@ app = Flask(__name__,
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///news.db'
 db = SQLAlchemy(app)
+app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'static/uploads')
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 class Mews(db.Model):
     id       = db.Column(db.Integer , primary_key = True)         
@@ -36,13 +41,23 @@ def start():
             'content': n.content
         } for n in news_list])
 
+@app.route('/api/upload' , methods=['POST'])
+def check():
+    if 'image' in request.files:
+        file = request.files['image']
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return ({'url': f'/static/uploads/{filename}'})
+    else:
+        return {'error': 'file not founded'}, 400
+
 @app.route('/')
 def new():
     return render_template('index.html')
 
 @app.route('/api/news/<int:id>', methods=['DELETE'])
 def del_te(id):
-    news = Mews.query.get(id)
+    news = db.session.get(Mews, id)
     db.session.delete(news)
     db.session.commit()
     return '', 204

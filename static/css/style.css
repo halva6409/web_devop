@@ -27,11 +27,12 @@ body {
 .post_delete {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .left{
     min-width: 40%;
     max-width: 100%;
-    margin: 5%;
+    margin: 1%;
     background: rgb(128, 180, 204);
     padding: 30px;
     border-radius: 15px;
@@ -40,7 +41,7 @@ body {
 .right{
     min-width: 40%;
     max-width: 100%;
-    margin: 5%;
+    margin: 1%;
     background: rgb(128, 180, 204);
     padding: 30px;
     border-radius: 15px;
@@ -93,6 +94,54 @@ h1 {
     color: #64cfd6;
     font-size: 14px;
     font-weight: bold;
+}
+
+/* Шаблон кнопки */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-blue {
+    background-color: #43ebeb;
+    color: white;
+}
+
+.btn-blue:hover {
+    background-color: #357abd;
+    transform: scale(1.05);
+}
+
+.btn-red {
+    background-color: #e24a4a;
+    color: white;
+}
+
+.btn-red:hover {
+    background-color: #bd3535;
+    transform: scale(1.05);
+}
+
+.input-field {
+    padding: 10px 14px;
+    border: 2px solid #ffeab2;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    margin: 2px;
+    transition: border-color 0.2s ease;
+    width: 100%;
+}
+
+.input-field:focus {
+    border-color: #fcb900;
 }
 
 /* Адаптивный дизайн для мобильных */

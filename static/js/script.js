@@ -42,9 +42,22 @@ async function deleteNews(id) {
     await loadNews()
 }
 
+async function uploadImage(){
+    const file = document.getElementById('imageFile').files[0]
+    const formdata = new FormData()
+    formdata.append('image', file)
+    const ans = await fetch('/api/upload', {
+                method: 'POST',
+                body: formdata
+            })
+    const result = await ans.json()
+    document.getElementById('uploadResult').innerHTML = `<img scr="${result.url}>`
+}
+
 document.getElementById('post_new').addEventListener('click', addNews)
 document.addEventListener('DOMContentLoaded', loadNews)
 document.getElementById('refreshButton').addEventListener('click', loadNews)
+document.getElementById('upload').addEventListener('click', uploadImage)
 
 document.getElementById('SearchPole').addEventListener('input', function() {
     const searching = this.value.toLowerCase()
@@ -61,3 +74,4 @@ document.getElementById('SearchPole').addEventListener('input', function() {
         reNewList.appendChild(card)
     })
 })
+
